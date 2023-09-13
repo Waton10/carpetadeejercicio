@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Estadísticas</title>
+</head>
+<body>
+    <h1>Calculadora de Estadísticas</h1>
+    
+    <form id="dataForm">
+        <label for="dataInput">Ingresa datos separados por comas:</label>
+        <input type="text" id="dataInput" required>
+        <button type="button" onclick="calcularEstadisticas()">Calcular</button>
+    </form>
+
+    <h2>Resultados:</h2>
+    
+    <table border="1">
+        <tr>
+            <th>Media</th>
+            <th>Varianza</th>
+            <th>Moda</th>
+            <th>Mediana</th>
+            <th>Desviación Típica</th>
+        </tr>
+        <tr>
+            <td id="media"></td>
+            <td id="varianza"></td>
+            <td id="moda"></td>
+            <td id="mediana"></td>
+            <td id="desviacion"></td>
+        </tr>
+    </table>
+
+    <script>
+        function calcularEstadisticas() {
+            const inputData = document.getElementById("dataInput").value;
+            const dataArray = inputData.split(',').map(Number);
+
+            const media = calcularMedia(dataArray);
+            const varianza = calcularVarianza(dataArray);
+            const moda = calcularModa(dataArray);
+            const mediana = calcularMediana(dataArray);
+            const desviacion = calcularDesviacion(dataArray);
+
+            document.getElementById("media").textContent = media;
+            document.getElementById("varianza").textContent = varianza;
+            document.getElementById("moda").textContent = moda;
+            document.getElementById("mediana").textContent = mediana;
+            document.getElementById("desviacion").textContent = desviacion;
+        }
+
+        function calcularMedia(dataArray) {
+            const sum = dataArray.reduce((acc, num) => acc + num, 0);
+            return sum / dataArray.length;
+        }
+
+        function calcularVarianza(dataArray) {
+            const media = calcularMedia(dataArray);
+            const sum = dataArray.reduce((acc, num) => acc + Math.pow(num - media, 2), 0);
+            return sum / dataArray.length;
+        }
+
+        function calcularModa(dataArray) {
+            const counts = {};
+            dataArray.forEach(num => {
+                counts[num] = (counts[num] || 0) + 1;
+            });
+            const mode = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+            return mode;
+        }
+
+        function calcularMediana(dataArray) {
+            const sortedData = dataArray.sort((a, b) => a - b);
+            const middle = Math.floor(sortedData.length / 2);
+            if (sortedData.length % 2 === 0) {
+                return (sortedData[middle - 1] + sortedData[middle]) / 2;
+            } else {
+                return sortedData[middle];
+            }
+        }
+
+        function calcularDesviacion(dataArray) {
+            const media = calcularMedia(dataArray);
+            const sum = dataArray.reduce((acc, num) => acc + Math.pow(num - media, 2), 0);
+            return Math.sqrt(sum / dataArray.length);
+        }
+    </script>
+</body>
+</html>
