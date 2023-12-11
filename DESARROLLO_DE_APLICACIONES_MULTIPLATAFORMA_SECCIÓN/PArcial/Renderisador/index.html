@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tauri Image Resizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="imageResizer">
+    <input type="file" id="imageInput" accept="image/*">
+    <div>
+      <label for="widthInput">Width:</label>
+      <input type="number" id="widthInput" placeholder="Width">
+    </div>
+    <div>
+      <label for="heightInput">Height:</label>
+      <input type="number" id="heightInput" placeholder="Height">
+    </div>
+    <button onclick="resizeImage()">Resize</button>
+    <img id="resizedImage" alt="Resized Image">
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
