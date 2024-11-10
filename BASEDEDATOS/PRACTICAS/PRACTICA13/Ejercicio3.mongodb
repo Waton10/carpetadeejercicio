@@ -1,0 +1,13 @@
+use PRACTICA13
+
+db.Estudiantes.updateOne(
+    { nombre: "Juan Pérez" },  
+    { $set: { ciudad: "Madrid" } } 
+  );
+  
+
+  db.Estudiantes.updateMany(
+    { grupo: "A" },  // Criterio de búsqueda (todos los estudiantes en el grupo A)
+    { $set: { curso: "Matemáticas Avanzadas" } }  // Actualización (cambiar curso)
+  );
+  

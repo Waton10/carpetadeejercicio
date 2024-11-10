@@ -1,0 +1,3 @@
+use PRACTICA13
+
+db.Estudiantes.find().pretty();

@@ -1,0 +1,10 @@
+use PRACTICA13
+
+db.Estudiantes.deleteOne(
+    { nombre: "Juan Pérez" } 
+  );
+  
+  db.Estudiantes.deleteMany(
+    { grupo: "B" }  
+  );
+  

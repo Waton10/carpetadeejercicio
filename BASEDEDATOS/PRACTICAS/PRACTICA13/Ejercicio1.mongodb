@@ -1,0 +1,30 @@
+useB PRACTICA13
+
+db.practica13.insertOne({
+    nombre: "Juan Pérez",
+    edad: 20,
+    curso: "Matemáticas",
+    ciudad: "Madrid"
+  })
+  
+  db.Estudiantes.insertMany([
+    {
+      nombre: "Ana García",
+      edad: 22,
+      curso: "Física",
+      ciudad: "Barcelona"
+    },
+    {
+      nombre: "Luis Fernández",
+      edad: 19,
+      curso: "Química",
+      ciudad: "Valencia"
+    },
+    {
+      nombre: "María López",
+      edad: 21,
+      curso: "Biología",
+      ciudad: "Sevilla"
+    }
+  ])
+  
